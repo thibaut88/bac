@@ -76,6 +76,3 @@
 		define('ROOT', $root);
 		$titlePage = str_replace(['.php','.js'], '', FILENAME);
 	}
-	
-	
-	// var_dump($_SESSION);

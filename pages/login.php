@@ -45,12 +45,13 @@ if(isset($_POST)&& !empty($_POST['login'])){
 		$_SESSION['Auth']['email'] = $row['email'];
 		$_SESSION['Auth']['nom'] = $row['nom'];
 		$_SESSION['Auth']['prenom'] = $row['prenom'];
+		//recupère le rôle de l'user
 		if($row['roles_id_role']==ADMIN){
 		$_SESSION['Auth']['admin'] = ADMIN;
 		}elseif($ $row['roles_id_role']==MEMBRE){
 		$_SESSION['Auth']['admin'] = MEMBRE;
 		}
-		
+		//instanciation
 		$user = new User();
 		$_SESSION['user']= $user;
 		//redirection
@@ -69,8 +70,6 @@ if(isset($_POST)&& !empty($_POST['login'])){
 	}
 }
 
-		// var_dump($user);
-		// var_dump($_SESSION);
 ?>
 <!doctype html/>
 <html>
@@ -94,7 +93,7 @@ integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh
 include('menu.php');
 ?>
 
-
+<!-- FORMULAIRE CONNECTION -->
 <div class="container" style="max-width:80%">
 	<div class="row">
 		<div class="col-xs-8 col-xs-offset-2
