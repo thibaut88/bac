@@ -82,7 +82,7 @@ include('../../pages/menu.php');
 								</div>
 
 								<div class="form-group">
-										<label for="">Auteur</label>
+										<label for="">Auteur:</label>
 										<input type="text" name="auteur" placeholder=""class="form-control" id="">
 								</div>
 
@@ -102,11 +102,14 @@ include('../../pages/menu.php');
 									  </select>
 								</div>
 								<div class="form-group">
-										<label for="">Vignette</label>
-										<input type="button" value="parcourir..."class="form-control" id="vignetteclick" onclick="document.getElementById('vignette').click();">
+										<label for="">Vignette:</label>
+										<input type="button" value="vignette format image"class="form-control" id="vignetteclick" onclick="document.getElementById('vignette').click();">
 										<input type="file" name="vignette" placeholder=""class="form-control" id="vignette"style="display:none;">
 								</div>
-									
+							<div class="form-group">
+										<label for="">Vignette URL:</label>
+										<input type="url" name="vignette_url" placeholder="http://www"class="form-control" id="vignette_url">
+								</div>							
 								<div class="form-group">
 										<textarea name="description" style="width:100%;max-width:100%;" rows=10> </textarea> 
 								</div>

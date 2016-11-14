@@ -33,7 +33,7 @@
 	<?php 	 
 	//si on est pas dans l'admin !!
 	  if($titlePage!=="administration"){ ?>
-	<div><form class=" hidden-sm hidden-xs navbar-form navbar-left">
+	<div><form class=" hidden-sm hidden-xs navbar-form navbar-left" action='<?=ROOT.'pages/videos.php'?>'>
         <div class="form-group">
           <input type="text" class="form-control" placeholder="Rechercher une video"name="search" id="search">
         </div>
@@ -122,7 +122,7 @@
 //ajouter autocomplete 
 function addCompleteSearch(elem)
 {
-	console.log(elem);
+	// console.log(elem);
 			var text = $(elem).html();
 			$('#search').val(text).css('color','rgba(150,0,0,0.95)');
 			$('#contentSearch').fadeOut(500).hide();

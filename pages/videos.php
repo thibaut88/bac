@@ -17,7 +17,7 @@ integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script><!-- CSS -->
 <link href="../css/animations.css" rel="stylesheet" type="text/css">
 <link href="../css/globals.css" rel="stylesheet" type="text/css">
-
+<!-- font -->
 <link href="https://fonts.googleapis.com/css?family=Archivo+Narrow" rel="stylesheet">
 
 </head>
@@ -94,13 +94,24 @@ include('menu.php');
 
 
 <?php	
+	$searchBtn =null;
 
+		if(isset($_GET['search']) && !empty($_GET['search'])){
+
+				$searchBtn = (string) $_GET['search'];
+		}
+		
 	$sql = "SELECT * FROM videos
 	LEFT JOIN categories ON videos.categories_id_categorie = categories.id_categorie
     LEFT JOIN favoris_videos ON videos.id_video = favoris_videos.id_video
 	LEFT JOIN users ON videos.users_id_user = videos.users_id_user
-	WHERE en_ligne = 1 ORDER BY videos.id_video DESC  LIMIT $start_from, $per_page";
+	WHERE en_ligne = 1 ";
 	
+	if($searchBtn != null){
+		$sql.= " AND titre LIKE '%".$searchBtn."%' ";
+	}
+	
+	$sql.=" ORDER BY videos.id_video DESC  LIMIT $start_from, $per_page";		
 	
 	//send query
 	$result = mysqli_query($conn, $sql);
