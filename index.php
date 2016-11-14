@@ -1,4 +1,5 @@
 <?php
+include('func/UserClass.php');
 include('config.php');
 ?>
 <!doctype html>

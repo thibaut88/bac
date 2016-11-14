@@ -1,6 +1,5 @@
 	<?php
 	
-	
 	//FUNC SECURISER FORMULAIRE
 	function securise($var)
 	{ 

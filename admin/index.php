@@ -1,5 +1,6 @@
 <?php
-include("../config.php");
+include('func/UserClass.php');
+include('config.php');
 
 
 // si user pas admin 
@@ -9,6 +10,7 @@ if(!$user->getAuth('admin')){
 	header("Location:../pages/login.php");
 }
 ?>
+
 <!doctype html>
 <html>
 <head>
