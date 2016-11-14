@@ -1,6 +1,6 @@
 <?php
-include('func/UserClass.php');
-include('config.php');
+include("../func/userClass.php");
+include("../config.php");
 
 
 // si user pas admin 
@@ -28,9 +28,25 @@ integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh
 <link href="../css/globals.css" rel="stylesheet" type="text/css">
 </head>
 
-
 <body>
 <!--START BODY -->
+
+<?php
+// MENU NAV
+include("../pages/menu.php");
+?>
+
+<h1 id="title" class="text-center">Administration</h1>
+<div class="container">
+
+
+<div  id="boardControl">
+	
+	<a href="pages/videos.php"><div><span class="animated slideInLeft ">vidéos</span></div></a>
+	<a href="pages/commentaires.php"><div><span class=" slideInLeftslideInLeft">commentaires</span></div></a>
+	<a href="pages/utilisateurs.php"><div><span class=" fadeInDownBig">utilisateurs</span></div></a>
+	<a href="pages/publications.php"><div><span class="animated fadeInUpBig">publications</span></div></a>
+</div>
 
 
 </div><!-- END CONTAINER -->
