@@ -1,0 +1,179 @@
+nav ul li a {
+		transition: all 0.7s!important;
+}
+body{
+	transition:margin 2s, padding 2s;
+}
+div.navbar-header img{
+		transition: margin-left 0.7s!important;
+		
+
+			
+}
+#image_user{
+
+}
+#boardControl a{
+	cursor:pointer;
+	margin:0px;padding:0px;
+}
+#boardControl{
+	border:1px solid rgba(0,0,0,0.15);
+	border-radius:9px;
+}
+#boardControl div{
+	position:relative;
+	display:inline-block;
+	width:49.70%;
+	margin:0px!important;padding:0px!important;
+	height:200px;
+	line-height:172px;
+	font-size:25px;
+	text-align:center;
+}
+#boardControl a:nth-child(1) div{
+background:red;	
+color:white;
+}
+#boardControl a:nth-child(2) div{
+background:orange;	
+color:white;
+}
+#boardControl a:nth-child(3) div{
+background:blue;	
+color:white;
+}
+#boardControl a:nth-child(4) div{
+background:green;	
+color:white;
+}
+
+
+
+#profil{
+	width:100%;
+	min-width:450px;
+}
+#profil img{
+	width:200px;
+	height:200px;
+	max-height:200px;
+	min-height:200px;
+	min-width:200px;
+	max-width:200px;
+	margin:auto;
+}
+#profil dt{
+	width:15px;
+}
+#profil dd{
+	margin-left:40px!important;
+	overflow-x:hidden;
+}
+#annuler{
+	position:absolute;
+	top:5px;
+	right:15px;
+	background:rgba(0,0,0,0.1);
+}
+#annuler i{
+	display:block;
+	margin:auto;
+	background:rgba(0,0,0,0.1);
+}
+#annuler:hover{
+	background:white;
+}
+#delete{
+	position:absolute;
+	top:5px;
+	right:15px;
+	background:rgba(0,0,0,0.1);
+
+}
+#modifier{
+	position:absolute;
+	top:5px;
+	right:35px;
+}
+
+#modifier i{
+	display:block;
+	margin-right:10px;
+	background:rgba(0,0,0,0.1);
+}
+#modifier:hover{
+	background:white;
+}
+#delete i{
+	display:block;
+	margin:auto;
+	background:rgba(0,0,0,0.1);
+}
+#delete:hover{
+	background:white;
+}
+
+#contentSearch{
+max-height:200px;
+overflow:auto;	
+
+}
+#contentSearch p a{
+	
+		color:black;
+}
+#contentSearch p{
+	
+	margin:0px;
+	padding:2px;
+
+}
+
+#searchNav form{
+
+
+}
+
+
+/**small screen**/
+@media (max-width: 768px ) {
+
+}
+
+
+
+
+/**small screen**/
+@media (max-width: 768px ) {
+
+	#menu li{
+		
+		color:red!important;
+	}
+	
+nav ul li a {
+	
+	background:rgba(160, 160, 160,0.15)!important;
+	padding-left:100px!important;
+}
+
+div.navbar-header{
+	
+	display:block;
+}
+div.navbar-header img{
+	margin-left:86px;
+}
+#searchNav{
+	display:none;
+}
+
+
+#contentSearch{
+	display:none;
+}
+
+
+}
+
