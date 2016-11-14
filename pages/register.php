@@ -28,7 +28,7 @@
 	
 	//start AVATAR IF HAS POST
 	if (!empty($_FILES['avatar']['size'])){
-			include('../func/move_avatar.php');
+			include('../scripts/move_avatar.php');
 	}//END AVATAR
 		
 		

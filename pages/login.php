@@ -26,22 +26,25 @@ if(isset($_POST)&& !empty($_POST['login'])){
 	
 	//Si on a un user de trouvé 
 	if (mysqli_num_rows($result)>0){
-		$row = mysqli_fetch_assoc($result);
-	
+		
 		//on defait l'ancienne session
 		session_unset();
 		session_destroy();
 		session_start();
-		$_SESSION['alert']['bienvenue']=true;
-
+		
 		$_SESSION['Auth']['admin']=0;
+		$_SESSION['alert']['bienvenue']=true;
 		$_SESSION['Auth']['logged']=true;
 		$_SESSION['Auth']['Error']=false;
+		
+		$row = mysqli_fetch_assoc($result);
+
 		$_SESSION['Auth']['id'] = $row['id_user'];
 		$_SESSION['Auth']['pseudo'] = $row['pseudo'];
 		$_SESSION['Auth']['email'] = $row['email'];
 		$_SESSION['Auth']['nom'] = $row['nom'];
 		$_SESSION['Auth']['prenom'] = $row['prenom'];
+		
 		//recupère le rôle de l'user
 		if($row['roles_id_role']==ADMIN){
 				$_SESSION['Auth']['admin'] = ADMIN;
@@ -51,8 +54,9 @@ if(isset($_POST)&& !empty($_POST['login'])){
 		//instanciation
 		$user = new User();
 		$_SESSION['user']= $user;
+		
 		//redirection
-		$location = ROOT;
+		$location = '../index.php';
 		header("Location:$location");
 		
 	}else{
