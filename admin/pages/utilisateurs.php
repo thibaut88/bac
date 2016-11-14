@@ -5,11 +5,8 @@
 include('../../func/UserClass.php');
 include('../../config.php');
 
-
-
 if(isset($_POST['sendModifier']) && !empty($_POST)){
 	
-	var_dump($_POST);
 	
 	$id=(int)$_POST['id'];
 	$prenom=(string)$_POST['firstname'];
@@ -67,7 +64,9 @@ if(!$user->getAuth('admin')){
 				$start_from = ($url_depart-1)*$per_page; // LIMIT 0, 6			
 		}
 		$total_pages = ceil($total/$per_page);
-
+		if($per_page>$total){
+			$per_page = $total;
+		}
 ?>
 <!doctype html>
 <html>
