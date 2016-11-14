@@ -100,3 +100,101 @@
 
 	<?php   
 	}  
+	  
+	//ALERTE D'AJOUT VIDEO
+	 if(!empty($_SESSION['alert']['addVideo'])&&$_SESSION['alert']['addVideo'] == true){ 
+		 $_SESSION['alert']['addVideo'] = false;
+
+	 ?>
+	  <div class="alert alert-success animated bounce" style="margin-top:0px;">
+		<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+		<strong>vidéo ajoutée !</strong>
+	  </div>
+
+	<?php   
+	}  
+	?>
+	
+		
+	<!-- SCRIPTS JQUERY -->
+<script type="text/javascript">
+
+//ajouter autocomplete 
+function addCompleteSearch(elem)
+{
+	console.log(elem);
+			var text = $(elem).html();
+			$('#search').val(text).css('color','rgba(150,0,0,0.95)');
+			$('#contentSearch').fadeOut(500).hide();
+}
+
+//document pret
+$(document).ready(function(){
+	
+		var val = $('#search').val();
+		var coords = $('#search').offset();
+		var hauteur = $('#search').height();
+		var left = coords.left;
+		var top =  coords.top*3.5;
+		top += hauteur;
+		left +=2;
+		 <?php
+		 
+		 if($titlePage !== 'administration' && $params[$len-2]=="BAC"){ ?>
+			 var ROOT = 'ajax/searchbar.php';
+		<?php  }else {
+			?>
+			 var ROOT = '../ajax/searchbar.php';
+		<?php } ?> 
+
+
+				
+//keyup
+$('#search').keyup(function(){
+	
+				var $elem = $(this);
+				var val = $elem.val();
+				var taille = val.length;
+			
+		if(taille>=3){
+			$.ajax({
+			type:"GET",
+			url: ROOT,
+			data:"search="+val,
+			dataType:'html',
+			success:function(result){
+				
+				$('#contentSearch').css({
+					'display':'block',
+					'position':'absolute',
+					'top':top+'px',
+					'left':left+'px',
+					'height':'300px',
+					'width':'260px'
+				});
+				
+				$('#contentSearch').css('z-index','900');
+				$('#contentSearch').css('background','white');
+				$('#contentSearch').css('border','2px solid rgba(34, 34, 34,1) ');
+				$('#contentSearch').css('border-radius','6px ');
+				$('#contentSearch').html('').hide();
+				$('#contentSearch').prepend("<ul>");
+				$('#contentSearch').prepend(result).show(200);
+				$('#contentSearch').prepend('</ul>');
+
+			}
+			
+			})//AJAX
+		}else if(taille<3){
+				$('#contentSearch').fadeOut(2000).hide();
+		}
+		
+		
+});//keyup
+	
+	
+});//Jquery
+
+</script>
+
+
