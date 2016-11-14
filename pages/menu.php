@@ -64,7 +64,7 @@
 					
 		<?php if(($params[3] == "admin") && ($user->getAuth() && $user->getAuth('admin') )){ ?>
 		
-				 <li><a class="animate bounce" id="lk-login" href="../scripts/logout_admin.php">
+				 <li><a class="animate bounce" id="lk-login" href="../scripts/logout.php">
 				  <span class="glyphicon glyphicon-log-in"></span> deconnection</a></li>
 				  
 							  <?php if(!$user->getAuth() && $params[3] == "admin") {?>
@@ -89,8 +89,14 @@
 		<strong>Bonjour !  <?=$_SESSION['Auth']['pseudo']?></strong>
 	  </div>
 	<?php   
-	} ?>
-	
+	}  
+	//ALERTE D'ENREGISTREMENT
+	 if(!empty($_SESSION['alert']['register'])&&$_SESSION['alert']['register'] == true){ 
+	 ?>
+	  <div class="alert alert-warning animated bounce" style="margin-top:0px;">
+		<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+		<strong>Votre compte a été créer avec succès !</strong>
+	  </div>
 
-
-
+	<?php   
+	}  

@@ -8,7 +8,6 @@
 	//si form envoyé
 if(isset($_POST)&& !empty($_POST['login'])){
 	
-	var_dump($_POST);
 	
 	$pass = (isset($_POST['pass'])&& !empty($_POST['pass']))?  (string) $_POST['pass']:null;
 	$email = (isset($_POST['email'])&& !empty($_POST['email']))?  (string) $_POST['email']:null;
@@ -33,13 +32,11 @@ if(isset($_POST)&& !empty($_POST['login'])){
 		session_unset();
 		session_destroy();
 		session_start();
-		
-		$_SESSION['Auth']['admin']=0;
-		
-		$_SESSION['Auth']['logged']=true;
-		$_SESSION['alert']['bienvenue'] = true;
-		$_SESSION['Auth']['Error']=false;
+		$_SESSION['alert']['bienvenue']=true;
 
+		$_SESSION['Auth']['admin']=0;
+		$_SESSION['Auth']['logged']=true;
+		$_SESSION['Auth']['Error']=false;
 		$_SESSION['Auth']['id'] = $row['id_user'];
 		$_SESSION['Auth']['pseudo'] = $row['pseudo'];
 		$_SESSION['Auth']['email'] = $row['email'];
@@ -47,9 +44,9 @@ if(isset($_POST)&& !empty($_POST['login'])){
 		$_SESSION['Auth']['prenom'] = $row['prenom'];
 		//recupère le rôle de l'user
 		if($row['roles_id_role']==ADMIN){
-		$_SESSION['Auth']['admin'] = ADMIN;
+				$_SESSION['Auth']['admin'] = ADMIN;
 		}elseif($ $row['roles_id_role']==MEMBRE){
-		$_SESSION['Auth']['admin'] = MEMBRE;
+				$_SESSION['Auth']['admin'] = MEMBRE;
 		}
 		//instanciation
 		$user = new User();
