@@ -26,7 +26,7 @@
 				$start_from = ($url_depart-1)*$per_page; // LIMIT 0, 6			
 		}
 		if($per_page > $total_videos){
-			$per_page = $total_videos;
+				$per_page = $total_videos;
 		}
 ?>
 <!doctype html>
@@ -64,16 +64,27 @@ include('menu.php');
 				$rep = mysqli_query($conn,$sql);
 					mysqli_set_charset($conn,"utf8");
 					if(mysqli_num_rows($rep)>0){
-					while($data=mysqli_fetch_assoc($rep)){ ?>
+					while($data=mysqli_fetch_assoc($rep)){ 
+					$id_cat = (int) $data['id_categorie']; ?>
+					
 					<a href="videos.php?cat=<?=$data['id_categorie']?>" title="categorie" alt="categorie" style="display:block;margin-bottom:8px;">
-					<button type="button" class="btn btn-primary"><?=$data['nom']?>  <span class="badge"> 7</span></button>	
+					<button type="button" class="btn btn-primary"><?=$data['nom']?>  <span class="badge"> 
+					<?php 
+					$bdd= mysqli_connect('localhost','admin','admin','bac');
+					$nb_cat = mysqli_fetch_assoc(mysqli_query($bdd, "SELECT id_categorie, COUNT(id_video) as total 
+																										FROM categories JOIN videos ON categories.id_categorie = videos.categories_id_categorie 
+																										WHERE id_categorie = $id_cat"));
+					$total_cat  = $nb_cat['total'];
+					echo $total_cat;
+					
+					?>
+					</span></button>	
 					</a>					
 				<?php	} } 	?>
 				
 				
 				
 				</div>
-				
 				
 				
 				

@@ -1,5 +1,6 @@
 
 <?php
+session_start();
 
 	
 
@@ -14,10 +15,7 @@
 			
 	}
 			
-			
-			
-			
-session_start();
+
 
 $id = $_SESSION['Auth']['id'];
 $nom = $_SESSION['Auth']['nom'];
@@ -80,8 +78,7 @@ var_dump($_FILES);
 	}//END AVATAR
 	
 	
-var_dump($nomavatar);
-
+	
 	$conn = mysqli_connect("localhost","admin","admin","bac");
 	$sql = "UPDATE avatars SET url = '$nomavatar'";
 	

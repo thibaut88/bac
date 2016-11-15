@@ -44,7 +44,7 @@
 								</div>
 							<div class="form-group">
 										<label for="">Vignette URL:</label>
-										<input type="url" name="vignette_url" placeholder="http://www"class="form-control" id="vignette_url">
+										<input type="url" name="vignette_url" placeholder="http://www/embed/"class="form-control" id="vignette_url">
 								</div>							
 								<div class="form-group">
 										<textarea name="description" style="width:100%;max-width:100%;" rows=10 required> </textarea> 
