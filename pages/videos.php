@@ -71,9 +71,10 @@ include('menu.php');
 					<button type="button" class="btn btn-primary"><?=$data['nom']?>  <span class="badge"> 
 					<?php 
 					$bdd= mysqli_connect('localhost','admin','admin','bac');
-					$nb_cat = mysqli_fetch_assoc(mysqli_query($bdd, "SELECT id_categorie, COUNT(id_video) as total 
-																										FROM categories JOIN videos ON categories.id_categorie = videos.categories_id_categorie 
-																										WHERE id_categorie = $id_cat"));
+					$nb_cat = mysqli_fetch_assoc(mysqli_query($bdd, 
+					"SELECT id_categorie, COUNT(id_video) as total 
+					FROM categories JOIN videos ON categories.id_categorie = videos.categories_id_categorie 
+					WHERE id_categorie = $id_cat"));
 					$total_cat  = $nb_cat['total'];
 					echo $total_cat;
 					
@@ -81,15 +82,15 @@ include('menu.php');
 					</span></button>	
 					</a>					
 				<?php	} } 	?>
-				
-				
-				
 				</div>
 				
-				
-				
-		</div><!-- col -->
 
+				
+		</div><!-- end col left  -->
+		
+		
+		
+		<!-- start col right  -->
 		<div class="col-xs-8">
 				<?php	
 						$searchBtn =null;
@@ -114,12 +115,14 @@ include('menu.php');
 					$sql.=" ORDER BY videos.id_video DESC  LIMIT $start_from, $per_page";		
 					//send query
 					$result = mysqli_query($conn, $sql);
+					?>
 					
+					<div class="row video " >
+					<?php
 					//reponse
 					if(mysqli_num_rows($result)>0){
 							while($video = mysqli_fetch_assoc($result)){ ?>
-					<div class="row video " id="<?=$video['id_video']?>" style="margin-bottom:120px;">
-						<div class="col-xs-12">
+						<div class="col-xs-6" style="margin-bottom:20px;"id="<?=$video['id_video']?>">
 						<h3 class="titre_video"><?=$video['titre']?></h3>
 						<div class="content_video">
 							<iframe width="100%" height="400" 
@@ -130,30 +133,32 @@ include('menu.php');
 						<div class="description"><?=$video['description']?>
 						</div><!-- description video -->
 						</div><!-- col -->
-					</div><!-- row -->
 					<?php } 
 					}else{
 						echo "pas de videos disponible";
 					}
 				?>
+				</div><!-- row -->
+
 					<!-- PAGINATION  -->
 							<div class="text-center">
 									<ul class="pagination">
 									
-											  <li><a href="videos.php?start=1">&laquo;</a></li>
+											  <li><a href="videos.php?start=1&<?=(isset($_GET['cat']) && !empty($_GET['cat']))?'cat='.$_GET['cat']:'';?>">&laquo;</a></li>
 									<?php
 										for ($i=0;$i<$total_pages;$i++){  ?>
 											<li 
 											<?php  if($i+1 ==$url_depart) {echo 'class="active"';} ?>
 											>
-													<a href="videos.php?start=<?=$i+1?>"><?=$i+1?></a>
+													<a href="videos.php?start=<?=$i+1?>&<?=(isset($_GET['cat']) && !empty($_GET['cat']))?'cat='.$_GET['cat']:'';?>"><?=$i+1?></a>
 											  </li>
 									<?php	} ?>
-											<li><a href="videos.php?start=<?=$total_pages?>">&raquo;</a></li>
+											<li><a href="videos.php?start=<?=$total_pages?>&<?=(isset($_GET['cat']) && !empty($_GET['cat']))?'cat='.$_GET['cat']:'';?>">&raquo;</a></li>
 											
 									</ul>
 							</div><!-- PAGINATION END -->
-			</div><!-- col -->
+			</div>	<!-- end col right  -->
+
 	</div><!-- END ROW -->
 </div><!-- END CONTAINER -->
 
