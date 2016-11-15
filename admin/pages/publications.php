@@ -23,54 +23,20 @@ include('../../config.php');
 <?php
 //ADD MENU 
 include('../../pages/menu.php');
+?>
 
+
+<?php
 //videos non publiée
 include('videos_not_published.php');
 //videos  publiées
 include('videos_published.php');
-
-
 ?>
-
-
-		
-		<div class="container" id="videosOff">
-		<div class="row">
-		
-		<table>
-		<thead>
-		<tr>
-		<th></th>
-		<th></th>
-		<th></th>
-		<th></th>
-		</tr>
-		</thead>
-		<tbody>
-		</tbody>
-		</table>
-		
-		</div><!-- end row -->
-		</div><!-- end container -->
-		
-		
-		
-		
-				
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 		
 </body><!-- END BODY -->
+<!-- SCRIPTS publier && brouillon -->
+<script type="text/javascript" src="../js/to_published.js"></script>
+<script type="text/javascript" src="../js/to_brouillon.js"></script>
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
 integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>

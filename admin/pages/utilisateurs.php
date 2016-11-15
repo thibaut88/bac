@@ -129,8 +129,8 @@ include('../../pages/menu.php');
 			
 						//query select users all
 						$sql = "SELECT * FROM users
-						JOIN roles ON users.roles_id_role = roles.id_role
-						JOIN avatars on users.avatars_id_avatar = avatars.id_avatar
+						LEFT JOIN roles ON users.roles_id_role = roles.id_role
+						LEFT JOIN avatars ON users.avatars_id_avatar = avatars.id_avatar
 						LIMIT $start_from, $per_page ";
 						
 						
