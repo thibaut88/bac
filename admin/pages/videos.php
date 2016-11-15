@@ -3,7 +3,6 @@ include('../../func/UserClass.php');
 include('../../config.php');
 
 if(isset($_POST) && !empty($_POST['sendAjouter'])){
-
 	
 	$IDUSER = $_SESSION['Auth']['id'];
 	$nom = $_SESSION['Auth']['nom'];
@@ -15,28 +14,33 @@ if(isset($_POST) && !empty($_POST['sendAjouter'])){
 	$description = (string) $_POST['description'];
 	$publication =(int)  $_POST['publication'];
 	$categorie =(int)  $_POST['categorie'];
+	$favoris_video = (int) 0;
 
 
 			//start AVATAR IF HAS POST
 		if (!empty($_FILES['vignette']['size'])){
-					include('../scripts/move_vignette.php');
+				include('../scripts/move_vignette.php');
 		}//END AVATAR
+		else{
+				$vignette=(string) "";
+		}		
+			//Si publication checked
+		if($publication=="on"){
+				$publication=(int) 1;
+		}else{
+				$publication=(int)0;
+		}
 					
-					
-					
-					$sql = "INSERT INTO videos VALUES (
-								null, '$titre','$description','$url','$auteur',
-								null,'$vignette',now(),$categorie,
-								$IDUSER,null,$publication)";
-								 
-								if(mysqli_query($conn,$sql)){
-								$_SESSION['alert']['addVideo']=true;		
-										
-								}else{
-									echo mysqli_error($conn);
-								}
-								
-								
+		$sql = "INSERT INTO videos VALUES (
+		null, '$titre','$description','$url','$auteur',
+		null,'$vignette',now(),$categorie,
+		$IDUSER,$favoris_video,$publication)";
+										 
+		if(mysqli_query($conn,$sql)){
+		$_SESSION['alert']['addVideo']=true;		
+		}else{
+		echo mysqli_error($conn);
+		}
 		
 }//end post
 
@@ -73,22 +77,22 @@ include('../../pages/menu.php');
 
 								<div class="form-group">
 										<label for="">Titre:</label>
-										<input type="text" name="titre" placeholder=""class="form-control" id="">
+										<input type="text" name="titre" placeholder=""class="form-control" id="" required>
 								</div>
 
 								<div class="form-group">
 										<label for="">Url (embed format):</label>
-										<input type="text" name="url" placeholder=""class="form-control" id="">
+										<input type="text" name="url" placeholder=""class="form-control" id=""required>
 								</div>
 
 								<div class="form-group">
 										<label for="">Auteur:</label>
-										<input type="text" name="auteur" placeholder=""class="form-control" id="">
+										<input type="text" name="auteur" placeholder=""class="form-control" id=""required>
 								</div>
 
 								<div class="form-group">
 									  <label for="categorie">Catégorie:</label>
-									  <select class="form-control" id="categorie" name="categorie">
+									  <select class="form-control" id="categorie" name="categorie"required>
 										<option value="0">Choisissez une catégorie</option>
 										<?php
 										$sql = "SELECT * FROM categories";
@@ -111,7 +115,7 @@ include('../../pages/menu.php');
 										<input type="url" name="vignette_url" placeholder="http://www"class="form-control" id="vignette_url">
 								</div>							
 								<div class="form-group">
-										<textarea name="description" style="width:100%;max-width:100%;" rows=10> </textarea> 
+										<textarea name="description" style="width:100%;max-width:100%;" rows=10 required> </textarea> 
 								</div>
 
 								<div class="form-group">
