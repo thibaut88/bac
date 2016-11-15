@@ -8,22 +8,27 @@
         <img alt="Brand" src="<?=ROOT?>img/logo/logo.png" >
       </a>
     </div>
-	
-	
+
     <ul class="nav navbar-nav">
       <li class="active"><a href="<?=ROOT?>"><span class="glyphicon glyphicon-home"> Acceuil</a></li>
+
 	  
-	  
+	  	
 		<!--si user connecté -->
-	<?php if($user->getAuth()){ ?>
+	<?php  if($user->getAuth()){  ?>
+	  <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Mon compte
+        <span class="caret"></span></a>
+        <ul class="dropdown-menu">
 		  <li><a href="<?=ROOT?>pages/profil.php"><span class="glyphicon glyphicon-wrench"> Mon compte</a></li>
-	<?php } ?>
-		<!--si user connecté -->
-	<?php if($user->getAuth('admin')){ ?>
+		  <!-- si admin connecté -->
+	<?php  if($user->getAuth('admin')){  ?>
 		  <li><a href="<?=ROOT?>pages/mes_videos.php"><span class="glyphicon glyphicon-facetime-video"> Mes videos</a></li>
 	<?php } ?>
-			  <li><a href="<?=ROOT?>pages/videos.php"><span class="glyphicon glyphicon-facetime-video"> Videos</a></li>
-
+        </ul>
+      </li>
+	<?php } ?>
+			 <li><a href="<?=ROOT?>pages/videos.php"><span class="glyphicon glyphicon-facetime-video"> Videos</a></li>
 		</ul>
 
 	
