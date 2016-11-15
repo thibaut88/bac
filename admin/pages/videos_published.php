@@ -1,4 +1,32 @@
+<?php
+//pagination
+$sql ="SELECT COUNT(*) as  Total FROM videos WHERE en_ligne = 1";
+$rep = mysqli_query($conn,$sql);
+$data = mysqli_fetch_assoc($rep);
+$total_not_inline = $data['Total'];
 
+$per_pageOff = 5;
+$start_fromOff=0;
+if(isset($_GET['stLef'])&&!empty($_GET['stLef'])){
+				$url_departOff = $_GET['stLef'];
+				// limite depart
+				$start_fromOff = ($url_departOff-1)*$per_pageOff; // LIMIT 0, 6				
+}else{
+				$url_departOff = 1;
+				// limite depart
+				$start_fromOff = ($url_departOff-1)*$per_pageOff; // LIMIT 0, 6			
+}
+
+		//total des pages 
+		$total_pagesOff = ceil($total_not_inline/$per_pageOff);
+		
+		if($per_pageOff > $total_not_inline){
+			$per_pageOff = $total_not_inline;
+		}
+
+
+
+?>
 		<div class="container-fluid" id="videosOff">
 		<div class="row">
 		<div class="col-xs-12">
@@ -27,7 +55,7 @@
 			LEFT JOIN categories ON videos.categories_id_categorie = categories.id_categorie
 			LEFT JOIN favoris_videos ON videos.id_video = favoris_videos.id_video
 			LEFT JOIN users ON videos.users_id_user = videos.users_id_user
-			WHERE en_ligne = 1 ORDER BY IDVIDEO";
+			WHERE en_ligne = 1 ORDER BY IDVIDEO LIMIT $start_fromOff, $per_pageOff";
 			
 			$rep = mysqli_query($conn,$sql);
 			if(mysqli_num_rows($rep)>0){ 
@@ -59,6 +87,27 @@
 		
 		
 		</div><!-- end col -->
+		</div><!-- end row -->
+		<div class="row">
+		<!-- START PAGINATION -->
+		<!-- PAGINATION  -->
+			<div class="text-center">
+					<ul class="pagination">
+					
+							  <li><a href="publications.php?stLef=1">&laquo;</a></li>
+					<?php
+						for ($i=0;$i<$total_pagesOff;$i++){  ?>
+							<li 
+							<?php  if($i+1 ==$url_departOff) {echo 'class="active"';} ?>
+							>
+									<a href="publications.php?stLef=<?=$i+1?>"><?=$i+1?></a>
+							  </li>
+					<?php	} ?>
+							<li><a href="publications.php?stLef=<?=$total_pagesOff?>">&raquo;</a></li>
+							
+					</ul>
+			</div><!-- PAGINATION END -->
+
 		</div><!-- end row -->
 		</div><!-- end container -->
 		
