@@ -4,17 +4,17 @@
 								var elem_td = elem.parent();
 								var elem_tr = elem_td.parent();
 								
-								//récupère l'id de l'user et l'ajoute au titre de la modal
+								//rÃ©cupÃ¨re l'id de l'user et l'ajoute au titre de la modal
 								var id_user = $(this).data('iduser');
 								//ajout dans l'input hidden
 								$("#IDuser").attr('value',id_user);
 								//modif texte modal box
-								$("h4.modal-title").empty().append("Modifier l'utilisateur n° "+id_user);
+								$("h4.modal-title").empty().append("Modifier l'utilisateur nÂ° "+id_user);
 								
 								
-								//on récupère les td avec les informations pour la modal
+								//on rÃ©cupÃ¨re les td avec les informations pour la modal
 								var td_all = $('#'+id_user+' td');
-								//infos à placer dans la modal
+								//infos Ã  placer dans la modal
 								var identifiant = $(td_all[0]).html();
 								var role = $(td_all[1]).html();
 								var avatar = $(td_all[2]).html();

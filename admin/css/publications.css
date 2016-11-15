@@ -1,0 +1,32 @@
+div#videosOn thead{
+	
+	background:rgba(180,0,0,0.85);
+	color:white;
+	font-weight:bold;
+	font-size:20px;
+	line-height:30px;
+
+	
+	
+}
+div#videosOn thead td{
+
+	height:30px;
+}
+
+div#videosOff thead{
+	
+	background:rgba(180,0,0,0.85);
+	color:white;
+	font-weight:bold;
+	font-size:20px;
+	line-height:30px;
+
+	
+	
+}
+div#videosOff thead td{
+
+	height:30px;
+}
+

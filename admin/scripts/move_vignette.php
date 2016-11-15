@@ -3,7 +3,7 @@
 	
 	
 							$ERRORS_FILES = array();
-								//On définit les variables :
+								//On dÃ©finit les variables :
 							$maxsize = 2097152; //Poid de l'image en bits
 							$maxwidth = 400; //Largeur de l'image
 							$maxheight = 400; //Longueur de l'image
