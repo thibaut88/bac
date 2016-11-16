@@ -1,6 +1,6 @@
 
 
-<nav class="navbar navbar-inverse" id="menu">
+<nav class="navbar navbar-default" id="menu">
   <div class="container-fluid">
     <div class="navbar-header">
 	<!-- logo brand -->
@@ -89,7 +89,7 @@
 	//ALERTE DE BONJOUR
 	 if(!empty($_SESSION['alert']['bienvenue'])&&$_SESSION['alert']['bienvenue'] == true){ 
 	 ?>
-	  <div class="alert alert-warning animated bounce" style="margin-top:0px;">
+	  <div class="alert alert-success animated bounce" style="margin-top:0px;">
 		<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
 		<strong>Bonjour !  <?=$_SESSION['Auth']['pseudo']?></strong>
 	  </div>
@@ -98,7 +98,7 @@
 	//ALERTE D'ENREGISTREMENT
 	 if(!empty($_SESSION['alert']['register'])&&$_SESSION['alert']['register'] == true){ 
 	 ?>
-	  <div class="alert alert-warning animated bounce" style="margin-top:0px;">
+	  <div class="alert alert-success animated bounce" style="margin-top:0px;">
 		<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
 		<strong>Votre compte a été créer avec succès !</strong>
 	  </div>
@@ -119,6 +119,7 @@
 	<?php   
 	}  
 	?>
+	
 	
 		
 	<!-- SCRIPTS JQUERY -->
