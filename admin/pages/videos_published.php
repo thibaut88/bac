@@ -1,38 +1,41 @@
 <?php
-//pagination
-$sql ="SELECT COUNT(*) as  Total FROM videos WHERE en_ligne = 1";
-$rep = mysqli_query($conn,$sql);
-$data = mysqli_fetch_assoc($rep);
-$total_not_inline = $data['Total'];
+		//pagination
+		$sql ="SELECT COUNT(*) as  Total FROM videos WHERE en_ligne = 1";
+		$rep = mysqli_query($conn,$sql);
+		$total = mysqli_fetch_assoc($rep);
+		$total_not_inline = $total['Total'];
 
-$per_pageOff = 5;
-$start_fromOff=0;
-if(isset($_GET['stLef'])&&!empty($_GET['stLef'])){
-				$url_departOff = $_GET['stLef'];
-				// limite depart
-				$start_fromOff = ($url_departOff-1)*$per_pageOff; // LIMIT 0, 6				
-}else{
-				$url_departOff = 1;
-				// limite depart
-				$start_fromOff = ($url_departOff-1)*$per_pageOff; // LIMIT 0, 6			
-}
+		$per_pageOff = 6;
+		$start_fromOff=0;
+		
+		//si clique pagination
+		if(isset($_GET['stLef'])&&!empty($_GET['stLef'])){
+						$url_departOff = $_GET['stLef'];
+						// limite depart
+						$start_fromOff = ($url_departOff-1)*$per_pageOff; // LIMIT 0, 6				
+		}else{
+						$url_departOff = 1;
+						// limite depart
+						$start_fromOff = ($url_departOff-1)*$per_pageOff; // LIMIT 0, 6			
+		}
 
 		//total des pages 
 		$total_pagesOff = ceil($total_not_inline/$per_pageOff);
 		
+		//si total inféreur à per_page
 		if($per_pageOff > $total_not_inline){
-			$per_pageOff = $total_not_inline;
+				$per_pageOff = $total_not_inline;
 		}
-
-
-
+		
 ?>
-		<div class="container-fluid" id="videosOff">
+
+
+
+		<div class="container-fluid" id="videosOff" style="max-width:1666px">
 		<div class="row">
 		<div class="col-xs-12">
 		
 			<table class="table table-bordered table-responsive table-striped">
-			<thead>
 			<tr>
 			<th>Numéro</th>
 			<th>Titre</th>
@@ -46,12 +49,10 @@ if(isset($_GET['stLef'])&&!empty($_GET['stLef'])){
 			<th>Id utilisateur</th>
 			<th>Action</th>
 			</tr>
-			</thead>
-			<tbody>
 				
 			<?php 
 			//videos non publiées
-			$sql = "SELECT *,videos.id_video as IDVIDEO ,categories.nom as cat, videos.favoris_video_id_video as fav FROM videos
+			$sql = "SELECT DISTINCT *,videos.id_video as IDVIDEO ,categories.nom as cat, videos.favoris_video_id_video as fav FROM videos
 			LEFT JOIN categories ON videos.categories_id_categorie = categories.id_categorie
 			LEFT JOIN favoris_videos ON videos.id_video = favoris_videos.id_video
 			LEFT JOIN users ON videos.users_id_user = videos.users_id_user
@@ -82,7 +83,6 @@ if(isset($_GET['stLef'])&&!empty($_GET['stLef'])){
 
 			<?php } } ?>	
 			
-			</tbody>
 			</table>
 		
 		
