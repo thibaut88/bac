@@ -1,0 +1,73 @@
+body{
+	font-family: 'Lato', sans-serif!important;
+	max-width:100%;
+	position:relative;
+}
+
+footer{
+	min-height:180px;
+	background:white;
+	color:black;
+
+}
+div#contentLogin{
+		background:url("../img/logo/sunrise.jpg") top left no-repeat;
+		height:634px;
+
+	
+}
+header h1{
+	font-size:50px;
+	line-height:110px;
+	height:108px;
+	text-align:center;
+	margin:0px;
+}
+header{
+	min-height:180px;
+	background:white;
+	position:relative;
+	color:black;
+	
+}
+header nav#menu{
+	position:absolute;
+	bottom:0px;
+	left:0px;
+	right:0px;
+	margin:0px;
+	
+}
+.row h1{
+	color:rgba(255,255,255,0.8);
+	margin-top:30px;
+	margin-bottom:30px;
+	margin-left:20%;
+}
+form label{
+	color:rgba(255,255,255,0.8);
+	
+}
+form input[type='submit']{
+	background:rgba(255,255,255,0);
+	color:rgba(255,255,255,1);
+}
+form input[type='submit']:hover{
+	background:transparent;
+	color:rgba(255,255,255,0.2);
+}
+form input[type='submit']:focus{
+	border-color:red!important;
+	background:transparent!important;
+}
+input{
+	background:transparent;
+	color:white;
+}
+@media (max-width: 768px) { 
+.row h1{
+		margin-left:10%;
+
+	
+}
+}

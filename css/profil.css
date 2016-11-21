@@ -1,0 +1,122 @@
+/** FOOTER **/
+
+footer{
+	min-height:180px;
+	background:white;
+	color:black;
+
+}
+/** BODY **/
+
+body{
+	color:white!important;
+	font-family: 'Lato', sans-serif!important;
+	max-width:100%;
+	position:relative;
+
+}
+div#contentProfil{
+		background-image: url("../img/logo/register-bg.png") ;
+
+}
+/** HEADER **/
+header h1{
+	font-size:50px;
+	line-height:110px;
+	height:108px;
+	text-align:center;
+	margin:0px;
+}
+header{
+	min-height:180px;
+	background:white;
+	position:relative;
+	color:black;
+	
+}
+header nav#menu{
+	position:absolute;
+	bottom:0px;
+	left:0px;
+	right:0px;
+	margin:0px;
+	
+}
+@media (max-width: 768px) {
+#profil img{
+	margin-bottom:60px;
+
+
+	}
+}
+
+
+#profil .glyphicon-remove,#profil .glyphicon-wrench{
+	font-size:30px;
+	color:white;
+}
+#profil .glyphicon-remove:hover{
+color:rgba(250,50,0,1);
+}
+#profil .glyphicon-wrench:hover{
+color:rgba(0,249,142,1);
+}
+#profil .glyphicon-wrench{
+	position:absolute;
+	top:5px;
+	right:55px;
+}
+
+#profil{
+	width:100%;
+	min-width:450px;
+}
+#profil img{
+	width:200px;
+	height:200px;
+	max-height:200px;
+	min-height:200px;
+	min-width:200px;
+	max-width:200px;
+	margin:auto;
+}
+#profil dt{
+	width:15px;
+}
+#profil dd{
+	margin-left:40px!important;
+	overflow-x:hidden;
+	padding-top:4px;
+	padding-bottom:4px;
+}
+#annuler{
+	position:absolute;
+	top:5px;
+	right:15px;
+	background:rgba(0,0,0,0.1);
+}
+#annuler i{
+	display:block;
+	margin:auto;
+	background:rgba(0,0,0,0.1);
+}
+#annuler:hover{
+	background:white;
+}
+#delete{
+	position:absolute;
+	top:5px;
+	right:15px;
+	background:rgba(0,0,0,0.1);
+
+}
+#modifier i{
+	display:block;
+	margin-right:10px;
+}
+
+#delete i{
+	display:block;
+	margin:auto;
+}
+
