@@ -42,15 +42,11 @@ transition:color ease-in 0.2s;
 hr{
 	margin-left:0%;
 	margin-right:0%;
-
 }
 div#contentAvatar{
 	margin-left:28%;
 	margin-right:40%;
-
-	
 }
-
  }
  @media (min-width:768px) { 
 input{
@@ -61,7 +57,7 @@ input{
 }
  }
 footer{
-	min-height:300px;
+	min-height:180px;
 	background:white;
 	color:black;
 	

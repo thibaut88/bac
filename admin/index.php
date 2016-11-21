@@ -1,8 +1,6 @@
 <?php
 include("../func/userClass.php");
 include("../config.php");
-
-
 // si user pas admin 
 if(!$user->getAuth('admin')){
 	session_destroy();
@@ -36,9 +34,9 @@ integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh
 include("../pages/menu.php");
 ?>
 
-<h1 id="title" class="text-center">Administration</h1>
 <div class="container">
 
+<h1 id="title" class="text-center well well-lg">Administration</h1>
 
 <div  id="boardControl">
 	

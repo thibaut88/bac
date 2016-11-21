@@ -14,8 +14,9 @@ class User{
 //constructeur récupère les infos de logs si ok
 public function __construct()
 {
-		//verifier connection
-		if(isset($_SESSION['Auth'])&&!empty($_SESSION['Auth'])){
+		//verifier s'il y a une connection
+		if(isset($_SESSION['Auth'])&&!empty($_SESSION['Auth']))
+		{
 			$this->Auth = true;
 			$this->pseudo = $_SESSION['Auth']['pseudo'];
 			$this->email = $_SESSION['Auth']['email'];
@@ -31,7 +32,8 @@ public function __construct()
 	
 	
 //récupère les informations de connection 
-public function getAuth($champ=""){
+public function getAuth($champ="")
+{
 		
 		//si on demande un champ
 		if(!empty($champ) && isset($champ))

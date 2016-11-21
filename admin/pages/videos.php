@@ -3,8 +3,61 @@ include('../../func/UserClass.php');
 include('../../config.php');
 
 //si le formulaire est posté
+if(isset($_POST) && !empty($_POST['sendModifier'])){
+		//infos admin connecté
+	$IDUSER = $_SESSION['Auth']['id'];
+	$nom = $_SESSION['Auth']['nom'];
+	$prenom = $_SESSION['Auth']['prenom'];
+
+	$idvideo = (int) $_POST['idvideo'];
+	$titre = (string) $_POST['titre'];
+	$url = (string) $_POST['url'];
+	$auteur = (string) $_POST['auteur'];
+	$description = (string) $_POST['description'];
+	$publication =(int)  $_POST['en_ligne'];
+	$categorie =(int)  $_POST['categorie'];
+	$vignette = (string)  $_POST['vignette_url'];
+	$favoris_video = (int) 0;
+				//start AVATAR IF HAS POST
+		if (!empty($_FILES['vignette']['size'])){
+				// include('../scripts/move_vignette.php');
+		}//END AVATAR
+			
+		
+			//Si publication checked
+		if($publication=="on"){
+				$publication=(int) 1;
+		}else{
+				$publication=(int) 0;
+		}
+		//query add video
+		$sql = "UPDATE videos SET
+		titre = '$titre',
+		description = '$description',
+		url = 'url',
+		auteur = 'auteur',
+		vignette = '$vignette',
+		date_ajout = NOW(),
+		categories_id_categorie = $categorie,
+		users_id_user = $IDUSER,
+		en_ligne = '$publication'
+		
+		WHERE id_video = $idvideo";
+										 
+		if(mysqli_query($conn,$sql)){
+				// afficher une alerte si ok
+				$_SESSION['alert']['modifVideo']=true;		
+				$_POST=null;
+		}else{
+				echo mysqli_error($conn);
+				var_dump($sql);
+		}
+		
+}
+//si le formulaire est posté
 if(isset($_POST) && !empty($_POST['sendAjouter'])){
-	
+
+
 	//infos admin connecté
 	$IDUSER = $_SESSION['Auth']['id'];
 	$nom = $_SESSION['Auth']['nom'];
@@ -16,6 +69,7 @@ if(isset($_POST) && !empty($_POST['sendAjouter'])){
 	$description = (string) $_POST['description'];
 	$publication =(int)  $_POST['publication'];
 	$categorie =(int)  $_POST['categorie'];
+	$vignette = (string)  $_POST['vignette_url'];
 	$favoris_video = (int) 0;
 
 
@@ -23,15 +77,13 @@ if(isset($_POST) && !empty($_POST['sendAjouter'])){
 		if (!empty($_FILES['vignette']['size'])){
 				include('../scripts/move_vignette.php');
 		}//END AVATAR
-		else{
-				$vignette=(string) "";
-		}	
+			
 		
 			//Si publication checked
 		if($publication=="on"){
 				$publication=(int) 1;
 		}else{
-				$publication=(int)0;
+				$publication=(int) 0;
 		}
 		//query add video
 		$sql = "INSERT INTO videos VALUES (
@@ -44,7 +96,10 @@ if(isset($_POST) && !empty($_POST['sendAjouter'])){
 				$_SESSION['alert']['addVideo']=true;		
 		}else{
 				echo mysqli_error($conn);
+				var_dump($sql);
 		}
+		
+		
 		
 }//end post
 
@@ -54,6 +109,7 @@ if(isset($_POST) && !empty($_POST['sendAjouter'])){
 <head>
 <title><?=$titlePage?></title>
 <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
 <!-- FRAMEWORK -->
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
@@ -76,9 +132,12 @@ if(isset($_POST) && !empty($_POST['sendAjouter'])){
 include('../../pages/menu.php');
 ?>
 
+<div class="container">
+<div class="row">
+
 <!-- menu tab video -->
 <center>
-<ul class="nav nav-pills" style="display:inline-block" id="menuVideo">
+<ul class="nav nav-pills" style="display:inline-block;" id="menuVideo">
   <li class="active"><a data-toggle="pill" href="#default">Ajouter une vidéo</a></li>
   <li><a data-toggle="pill" href="#menu1">Modifier une vidéo</a></li>
   <li><a data-toggle="pill" href="#menu2">Supprimer une vidéo</a></li>
@@ -108,7 +167,9 @@ include('../../pages/menu.php');
   </div>
 </div><!-- end tab content-->
 
-		
+
+</div>		
+</div>		
 </body><!-- END BODY -->
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"

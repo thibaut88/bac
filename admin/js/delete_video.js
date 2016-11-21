@@ -7,7 +7,6 @@ function deleteVideo(id_video){
 		dataType:'html',
 		success:function(result){
 				$("#menuVideo").after(result);
-					alert('ok');
 		}
 	
 

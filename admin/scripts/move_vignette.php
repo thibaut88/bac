@@ -54,7 +54,7 @@
 									// extension 
 									$extension_upload = strtolower(substr(strrchr($avatar['name'], '.')  ,1));
 									$nomavatar = str_replace(' ','',$nameImage).".".$extension_upload;
-									$pathImage = "../../img/vignette/".$nomavatar;
+									$pathImage = "img/vignette/".$nomavatar;
 									move_uploaded_file($avatar['tmp_name'],$pathImage);
 									return $pathImage;
 							};	//end func move avatar

@@ -29,12 +29,12 @@
 ?>
 
 <!-- start container -->
-<div class="container-fluid" id="videosOn" style="max-width:1666px">
+<div class="container" id="videosOn" >
 		<div class="row">
 		<div class="col-xs-12">
 		
 				<!-- start table not published -->
-				<table class="table table-bordered table-responsive table-striped">
+				<table class="table table-bordered table-responsive table-striped  table-hover table-condensed">
 				<tr>
 				<th>Numéro</th>
 				<th>Titre</th>
@@ -66,8 +66,8 @@
 				<td><?=$data['IDVIDEO']?></td>
 				<td><?=$data['titre']?></td>
 				<td><?=$data['auteur']?></td>
-				<td><?=$data['url']?></td>
-				<td><?=$data['vignette']?></td>
+			<td><iframe src="<?=$data['url']?>"></iframe></td>
+			<td><img src="<?=$data['vignette']?>" class="img img-responsive" width="150px" height="150px"></td>
 				<td><?=$data['description']?></td>
 				<td><?=$data['date_ajout']?></td>
 				<td><?=$data['nom']?></td>

@@ -15,8 +15,7 @@ $(function(){
 			var imgElement = document.createElement('img');
 			imgElement.style.display = 'inline-block';
 			imgElement.style.width = "120px";
-			imgElement.style.height= "120px";
-
+			imgElement.style.height= "120px";			
 			imgElement.src = this.result;
 			$('#contentAvatar').empty().hide();
 			$('#contentAvatar').append(imgElement).fadeIn(500);

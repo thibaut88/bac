@@ -1,6 +1,12 @@
+<header>
 
 
-<nav class="navbar navbar-default" id="menu">
+<h1 class="animated zoomIn">
+<span class="well">VIDEOALL</span>
+</h1>
+
+
+<nav class="navbar navbar-inverse" id="menu">
   <div class="container-fluid">
     <div class="navbar-header">
 	<!-- logo brand -->
@@ -21,10 +27,7 @@
         <span class="caret"></span></a>
         <ul class="dropdown-menu">
 		  <li><a href="<?=ROOT?>pages/profil.php"><span class="glyphicon glyphicon-wrench"> Mon compte</a></li>
-		  <!-- si admin connecté -->
-	<?php  if($user->getAuth('admin')){  ?>
-		  <li><a href="<?=ROOT?>pages/mes_videos.php"><span class="glyphicon glyphicon-facetime-video"> Mes videos</a></li>
-	<?php } ?>
+
         </ul>
       </li>
 	<?php } ?>
@@ -38,13 +41,14 @@
 	<?php 	 
 	//si on est pas dans l'admin !!
 	  if($titlePage!=="administration"){ ?>
-	<div><form class=" hidden-sm hidden-xs navbar-form navbar-left" action='<?=ROOT.'pages/videos.php'?>'>
+	<form class=" hidden-sm hidden-xs navbar-form navbar-left" action='<?=ROOT.'pages/videos.php'?>'>
         <div class="form-group">
           <input type="text" class="form-control" placeholder="Rechercher une video"name="search" id="search">
+		          <button type="submit" class="btn btn-default"name="searchBtn">valider</button>
+
         </div>
-        <button type="submit" class="btn btn-default"name="searchBtn">valider</button>
 				  <span id="contentSearch"></span>
-      </form></div>
+      </form>
 	  	<?php  }  ?>
 		
 		
@@ -83,7 +87,7 @@
   </div> <!-- end container-fluid --->
 </nav> <!-- end navigation --->
  
- 
+ </header>
  
 	<?php
 	//ALERTE DE BONJOUR
@@ -118,8 +122,36 @@
 
 	<?php   
 	}  
-	?>
 	
+	
+		//ALERTE D'AJOUT VIDEO
+	 if(!empty($_GET['modifOk']['modifVideo'])&&$_SESSION['alert']['modifVideo'] == true){ 
+		 $_SESSION['alert']['modifVideo'] = false;
+
+	 ?>
+	  <div class="alert alert-success animated bounce" style="margin-top:0px;">
+		<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+		<strong>vidéo modifiée !</strong>
+	  </div>
+
+	<?php   
+	}  
+	
+	
+		
+		//ALERTE DE MODIF COMMENTAIRE
+	 if(!empty($_GET['modif'])&&$_GET['modif']== 'ok'){ 
+		 $_GET['modifCommentaire'] = false;
+
+	 ?>
+	  <div class="alert alert-success animated bounce" style="margin-top:0px;">
+		<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+		<strong>Commentaire modifiée !</strong>
+	  </div>
+
+	<?php   
+	}  
+	?>
 	
 		
 	<!-- SCRIPTS JQUERY -->

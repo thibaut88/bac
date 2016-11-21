@@ -3,8 +3,9 @@ include('../../func/UserClass.php');
 include('../../config.php');
 ?>
 <!doctype html>
-<html>
+<html lang='fr'>
 <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 	<title><?=$titlePage?></title>
 	<meta charset="utf-8">
 	<!-- FRAMEWORK -->
@@ -16,7 +17,7 @@ include('../../config.php');
 	<!-- CSS -->
 	<link href="../../css/animations.css" rel="stylesheet" type="text/css">
 	<link href="../../css/globals.css" rel="stylesheet" type="text/css">
-	<link href="../css/publications.css" rel="stylesheet" type="text/css">
+	<link href="../../css/publidcations.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 	<!--START BODY -->

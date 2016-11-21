@@ -123,7 +123,8 @@ include('menu.php');
 								<label class="control-label col-sm-2" for="avatar">Avatar</label>
 								<div class="col-sm-10">
 								<!-- déclenche linput au clic -->
-								  <input class="form-control btn-sm" type="button" value="Parcourir une image" onclick="document.getElementById('avatar').click()";>
+								  <input class="form-control btn-sm" type="button" value="Parcourir une image"
+								  onclick="document.getElementById('avatar').click()";>
 								  <input type="file"  name="avatar" class="form-control" id="avatar"style="display:none">
 								</div>
 							  </div>

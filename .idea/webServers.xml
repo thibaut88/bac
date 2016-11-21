@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="58968d43-2797-4bdd-949e-7d7d58574c8a" name="simplon" url="http://thibautm.simplon-epinal.tk">
+        <fileTransfer host="thibautm.simplon-epinal.tk" port="21" password="df9bdf9fdf9adf9ddf98df9edf9ddf98df93" username="thibautm">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" showHiddenFiles="true" />
+          </advancedOptions>
+          <option name="port" value="21" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

@@ -31,11 +31,12 @@
 
 
 
-		<div class="container-fluid" id="videosOff" style="max-width:1666px">
+		<div class="container" id="videosOff" >
 		<div class="row">
 		<div class="col-xs-12">
 		
-			<table class="table table-bordered table-responsive table-striped">
+			<table class="table table-bordered table-responsive table-striped table-hover table-condensed">
+			<thead>
 			<tr>
 			<th>Numéro</th>
 			<th>Titre</th>
@@ -49,7 +50,8 @@
 			<th>Id utilisateur</th>
 			<th>Action</th>
 			</tr>
-				
+			</thead>
+			<tbody>	
 			<?php 
 			//videos non publiées
 			$sql = "SELECT DISTINCT *,videos.id_video as IDVIDEO ,categories.nom as cat, videos.favoris_video_id_video as fav FROM videos
@@ -67,8 +69,8 @@
 			<td><?=$data['IDVIDEO']?></td>
 			<td><?=$data['titre']?></td>
 			<td><?=$data['auteur']?></td>
-			<td><?=$data['url']?></td>
-			<td><?=$data['vignette']?></td>
+			<td><iframe src="<?=$data['url']?>"></iframe></td>
+			<td><img src="<?=$data['vignette']?>" class="img img-responsive" width="150px" height="150px"></td>
 			<td><?=$data['description']?></td>
 			<td><?=$data['date_ajout']?></td>
 			<td><?=$data['nom']?></td>
@@ -82,7 +84,7 @@
 			</tr>
 
 			<?php } } ?>	
-			
+			 </tbody>
 			</table>
 		
 		

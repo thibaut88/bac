@@ -1,9 +1,7 @@
-	
 $(function(){
 	
-
-	
 		var anims =[
+		'animated fadeIn',
 		'animated fadeIn',
 		'animated fadeIn',
 		'animated fadeIn',
@@ -30,12 +28,11 @@ $(function(){
 		time;
 		
 		function ajouterAnim(e){
-			
 			// $(e).addClass('animated fadeIn');
 			$(e).addClass(anims[a]); a++;
 		}
+		
 		function envoyerbtn(){
-			
 			$('input[type=submit]').addClass('animated fadeInUp');
 		}	
 
