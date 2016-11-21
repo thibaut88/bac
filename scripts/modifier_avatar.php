@@ -1,9 +1,13 @@
-
 <?php
-session_start();
+	//MODIFIER L'AVATAR PAGE PROFIL 	
+	session_start();
 
+	//INFOS USER
+	$id = $_SESSION['Auth']['id'];
+	$nom = $_SESSION['Auth']['nom'];
+	$prenom = $_SESSION['Auth']['prenom'];
+	$id_avatar= (!empty($_POST['id_avatar']))? (int) $_POST['id_avatar'] : null;
 	
-
 	//func to move image from folder tmp to folder in server
 	function move_avatar($avatar,$nameImage) {
 			//extension 
@@ -15,19 +19,9 @@ session_start();
 			
 	}
 			
-
-
-$id = $_SESSION['Auth']['id'];
-$nom = $_SESSION['Auth']['nom'];
-$prenom = $_SESSION['Auth']['prenom'];
-
-
 if(!empty($_FILES['avatar']) && isset($_FILES)){
-
-var_dump($_FILES);
-
-
-
+	
+	
 		//start AVATAR IF HAS POST
 	if (!empty($_FILES['avatar']['size'])){
 							$ERRORS_FILES = array();
@@ -70,20 +64,40 @@ var_dump($_FILES);
 									$ERRORS_FILES[] = $avatar_erreur3;
 							}
 							//nom de l'image
-							$nameImage = $nom.''.$prenom.''.time();
+							$nameImage = $nom.''.$prenom;
 							
 							//avatar nom complet
 							//si manque pas avatar size on appel la fonction move avatar
 							$nomavatar=(!empty($_FILES['avatar']['size']))? move_avatar($_FILES['avatar'],$nameImage):'';			
 	}//END AVATAR
 	
-	
-	
-	$conn = mysqli_connect("localhost","admin","admin","bac");
-	$sql = "UPDATE avatars SET url = '$nomavatar'";
-	
-	if(mysqli_query($conn,$sql)){
-			header("Location:../pages/profil.php?avatar=ok");		
-	}
 
+			
+	// var_dump($_FILES);
+	// var_dump($_POST);
+	// var_dump($id);
+	// var_dump($id_avatar);
+	// var_dump($nomavatar);
+
+	$conn = mysqli_connect("localhost","admin","admin","bac");
+	//si user n'avait pas d'avatar
+	if($id_avatar == null){
+			$sql = "INSERT INTO avatars (id_avatar, url) VALUES (null, '$nomavatar') ";
+			if(mysqli_query($conn,$sql)){
+					$id_avatar=(int) mysqli_insert_id($conn);
+					$sql="UPDATE users SET avatars_id_avatar = $id_avatar WHERE id_user = $id";
+					if(mysqli_query($conn,$sql)){
+							header("Location:../pages/profil.php?avatar=ok");		
+					}
+				
+			}
+	}else{
+			$sql = "UPDATE avatars SET url = '$nomavatar' WHERE id_avatar = $id_avatar";
+
+			if(mysqli_query($conn,$sql)){
+					header("Location:../pages/profil.php?avatar=ok");		
+			}else{
+					echo mysqli_error($conn);
+			}
+	}
 }

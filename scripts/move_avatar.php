@@ -5,10 +5,12 @@
 							$maxheight = 400; //Longueur de l'image
 							$extensions_valides = array( 'jpg' , 'jpeg' , 'gif' , 'png', 'bmp' ); //Liste des extensions valides
 							$i=0;//gère les erreurs
+							
 							$ERRORS_FILES = array();
 							//SI IL Y A UNE ERREUR
 							if ($_FILES['avatar']['error'] > 0)
-							{
+							{			
+									$i++;
 									$avatar_erreur = "Erreur lors du transfert de l'avatar : ";
 									$ERRORS_FILES[] = $avatar_erreur;
 							}
@@ -38,8 +40,10 @@
 									$avatar_erreur3 = "Extension de l'avatar incorrecte";
 									$ERRORS_FILES[] = $avatar_erreur3;
 							}
+							
+							
 							//nom de l'image
-							$nameImage = $nom.''.$prenom;
+							$nameImage = $nom.''.$prenom.''.$pseudo;
 							
 							//avatar nom complet
 							//si manque pas avatar size on appel la fonction move avatar
